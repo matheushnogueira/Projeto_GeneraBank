@@ -1,0 +1,54 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
+.back{
+    background-image: url(../../assets/ImagemHome.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.card{
+    width: 400px;
+    margin: auto;
+    margin-top: 20px;
+    border: 2px solid black;
+    padding: 20px;
+    border-radius: 10px;
+    font-family: Alata;
+    backdrop-filter: blur(15px);
+}
+.card h1{
+    margin: 20px;
+    margin-top: 10px;  
+    text-align: center;
+}
+.inputs{
+    display: grid;
+}
+.inputs input{
+    width: 360px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 6px 16px;
+    background-color: transparent;
+    color: black;
+}
+.button {
+    margin-top: 10px;
+    padding: 5px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 6px 16px;
+    text-align: center;
+}
+.button a{
+    text-decoration: none;
+    color: black;
+    font-size: large;
+}

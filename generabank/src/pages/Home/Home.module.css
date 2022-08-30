@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
+.card{
+    background-image: url(../../assets/ImagemHome.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 580px;
+}
+.text{
+    display: flex;
+    justify-items: center;
+    margin-left: 50px;
+    padding-top: 50px;
+    font-family: Alata;
+    font-size: large;
+    color: hsla(0, 0%, 14%, 1);
+}
+.button{
+    padding-top: 50px;
+    margin-left: 80px;  
+}
+.button a{
+    font-family: Alata;
+    color: white;
+    text-decoration: none;
+    border: solid 2px #5d9d4e;
+    background-color: #5d9d4e;
+    padding: 5px;
+    padding-left: 80px;
+    padding-right: 80px;
+    border-radius: 10px;
+}

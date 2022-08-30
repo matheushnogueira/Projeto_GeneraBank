@@ -1,0 +1,13 @@
+Name: Genera Bank
+Color:#5d9d4e, hsla(0, 0%, 14%, 1)
+Fonte: Alata,
+
+Conclusão estilo
+Home:concluido	
+Login:
+Cadastro:
+Saque:
+Depósito:
+Tranferência:
+GrBoleto:
+PgmBoleto:
