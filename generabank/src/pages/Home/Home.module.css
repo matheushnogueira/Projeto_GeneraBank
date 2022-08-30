@@ -1,12 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
 
 .card{
-    background-image: url(../../assets/ImagemHome.jpg);
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100%;
-    height: 579px;
+    margin-bottom: 80px;
 }
 .text{
     display: flex;
