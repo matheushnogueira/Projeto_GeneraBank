@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import styles from './PessoaPj.module.css'
 
 const PessoaPj = () => {
@@ -13,24 +14,35 @@ const PessoaPj = () => {
         <h1>CADASTRO</h1>
 
         <div className={styles.inputs}>
-          <label htmlFor="cpf">CNPJ:</label>
-          <input type="text" name="cnpj" placeholder='Digite seu CNPJ'/>
+          <label>
+            <span>CNPJ:</span>
+            <input type="number" name="cnpj" placeholder='Digite seu CNPJ'/>
+          </label>
 
-          <label htmlFor="name">Nome Completo:</label>
-          <input type="text" name="name" placeholder='Digite seu nome completo'/>
+          <label>
+            <span>Nome Completo:</span>
+            <input type="text" name="name" placeholder='Digite seu nome completo'/>
+          </label>
 
-          <label htmlFor="name">Razão Social:</label>
-          <input type="text" name="razao" placeholder='Digite sua razão social'/>
+          <label>
+            <span>Razão Social:</span>
+            <input type="text" name="razao" placeholder='Digite sua razão social'/>
+          </label>
 
-          <label htmlFor="name">Nome da Empresa:</label>
-          <input type="text" name="empresa" placeholder='Digite os nome da empresa'/>
+          <label>
+            <span>Nome da Empresa:</span>
+            <input type="text" name="empresa" placeholder='Digite os nome da empresa'/>
+          </label>
 
-          <label htmlFor="telefone">Telefone:</label>
-          <input type="text" name="telefone" placeholder='Digite seu telefone'/>
+          <label >
+            <span>Email da empresa:</span>
+            <input type="email" name="email" placeholder='Digite o email da empresa'/>
+          </label>
 
-          <label htmlFor="senha">Senha:</label>
-          <input type="text" name="senha" placeholder='Digite uma senha'/>
-
+          <label>
+            <span>Senha:</span>
+            <input type="text" name="senha" placeholder='Digite uma senha'/>
+          </label>
         </div>
 
         <div className={styles.button}>

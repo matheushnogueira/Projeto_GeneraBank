@@ -1,5 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 import styles from './PessoaPf.module.css'
 
 const PessoaPf = () => {
@@ -12,17 +13,30 @@ const PessoaPf = () => {
         <h1>CADASTRO</h1>
 
         <div className={styles.inputs}>
-          <label htmlFor="name">Nome Completo:</label>
-          <input type="text" name="name" placeholder='Digite seu nome completo'/>
+          <label>
+            <span>Nome Completo:</span>
+            <input type="text" name="name" required placeholder='Digite seu nome completo'/>
+          </label>
 
-          <label htmlFor="cpf">CPF:</label>
-          <input type="text" name="cpf" placeholder='Digite seu CPF'/>
+          <label>
+            <span>CPF:</span>
+            <input type="number" name="cpf" required placeholder='Digite seu nome CPF'/>
+          </label>
 
-          <label htmlFor="telefone">Telefone:</label>
-          <input type="text" name="telefone" placeholder='Digite seu telefone'/>
+          <label>
+            <span>Email:</span>
+            <input type="email" name="email" required placeholder='Digite seu nome email'/>
+          </label>
 
-          <label htmlFor="senha">Senha:</label>
-          <input type="text" name="telefone" placeholder='Digite uma senha'/>
+          <label>
+            <span>Telefone</span>
+            <input type="number" name="telefone" required placeholder='Digite seu nome telefone'/>
+          </label>
+
+          <label>
+            <span>Senha:</span>
+            <input type="text" name="senha" required placeholder='digite uma senha'/>
+          </label>
         </div>
 
         <div className={styles.button}>
