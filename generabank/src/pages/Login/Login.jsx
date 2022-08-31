@@ -3,16 +3,20 @@ import { NavLink } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/auth';
 
 //Styles
 import styles from './Login.module.css'
+
 
 const schema = yup.object({
   email: yup.string().email("Digite um email válido").required("O email é obrigatório"),
   password: yup.string().min(6, "A senha deve ter pelo menos 6 dígitos").required("A senha é obrigatório"),
 }).required();
 
-const Register = () => {
+const LoginPage = () => {
+  const { autheticated, login } = useContext(AuthContext)
 
   const { 
     register, 
@@ -55,4 +59,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default LoginPage
