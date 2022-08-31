@@ -1,48 +1,73 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { useForm } from "react-hook-form";
+import { cnpj } from 'cpf-cnpj-validator';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+
+
+//Styles
 import styles from './RegisterPj.module.css'
+
+const schema = yup.object({
+  name: yup.string().required("O nome é obrigatório"),
+  CNPJ: yup.string().required().test((value) => cnpj.isValid(value)),
+  email: yup.string().email("Digite um email válido").required("O email é obrigatório"),
+  password: yup.string().min(6, "A senha deve ter pelo menos 6 dígitos").required("A senha é obrigatório"),
+  confirmPassword: yup.string().required("Confirmar a senha é obrigatório").oneOf([yup.ref("password")], "As senhas devem ser iguais"),
+}).required();
 
 const RegisterPj = () => {
 
+  const { 
+    register, 
+    handleSubmit, 
+    formState: { errors }
+  } = useForm({
+    resolver: yupResolver(schema)
+  });
+
+  function onSubmit(userData){
+    console.log(userData)
+  }
+
   return (
     <div className={styles.back}>
-      <form className={styles.card}>
+      <form className={styles.card} onSubmit={handleSubmit(onSubmit)}>
 
-        <h1>Para sua empresa</h1>
+      <h1>Para sua Empresa</h1>
 
-        <div className={styles.inputs}>
+      <label>
+        Nome
+        <input type="text" {...register("name", { required: true })} />
+        <span>{errors.name?.message}</span>
+      </label>
 
-          <label>
-            <span>Nome:</span>
-            <input type="text" name='name' placeholder='Digite seu nome' />
-          </label>
+      <label>
+        CNPJ
+        <input type="text" {...register("CNPJ", { required: true })} />
+        {errors.CNPJ &&<span>Digite um CNPJ válido</span>}
+      </label>
 
-          <label>
-            <span>CNPJ:</span>
-            <input type="cpf" name='CPF' placeholder='Digite o CNPJ' />
-          </label>
+      <label>
+        Email da empresa
+        <input type="text" {...register("email", { required: true })} />
+        <span>{errors.email?.message}</span>
+      </label>
 
-          <label>
-            <span>Email da empresa:</span>
-            <input type="email" name='email' placeholder='Digite o email da empresa' />
-          </label>
+      <label>
+        Senha
+        <input type="password" {...register("password", { required: true })} />
+        <span>{errors.password?.message}</span>
+      </label>
 
-          <label>
-            <span>Telefone para contato:</span>
-            <input type="telefone" name='telefone' placeholder='Digite o telefone' />
-          </label>
+      <label>
+        Confirmar Senha
+        <input type="password" {...register("confirmPassword", { required: true })} />
+        <span>{errors.confirmPassword?.message}</span>
+      </label>
 
-          <label>
-            <span>Senha:</span>
-            <input type="senha" name='senha' placeholder='Digite sua senha' />
-          </label>
-
-        </div>
-
-        <div className={styles.button}>
-          <NavLink to="/">Finalizar Cadastro</NavLink>
-        </div>
-      </form>
+      <button type="submit">Cadastrar-se</button>
+    </form>
     </div>
   )
 }

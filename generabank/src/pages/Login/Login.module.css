@@ -9,55 +9,52 @@
     height: 100%;
     position: absolute;
 }
-.card{
+.card {
+    height: 667px;
     width: 400px;
-    margin: auto;
-    margin-top: 100px;
-    margin-bottom: 99px;
-    text-align: center;
-    border: 2px solid black;
-    padding: 20px;
-    border-radius: 10px;
-    font-family: Alata;
-    backdrop-filter: blur(15px);
-}
-.h1{
-    margin: 20px;
-    margin-top: 10px;  
-}
-.inputs{
-    display: grid;
-}
-.inputs input{
+    margin-left:460px;
     display: flex;
-    justify-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    backdrop-filter: blur(10px);
+  }
+  .link a{
+    font-family: Atala;
+    color: black;
+
+  }
+ 
+  .card label {
+    display: flex;
+    flex-direction: column;
+    font-family: Alata;
+  }
+  
+  .card input {
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 25px;
     width: 300px;
-    margin-left: 30px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    border: 2px solid black;
-    border-radius: 10px;
-    font-weight: bold;
-    padding: 6px 16px;
     background-color: transparent;
-}
-.button {
-    margin-top: 40px;
-    padding: 5px;
-    border: 2px solid black;
-    border-radius: 10px;
+  }
+  
+  .card button {
+    width: 300px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
     font-weight: bold;
-    padding: 6px 16px;
-}
-.button a{
-    text-decoration: none;
-    color: black;
-    font-size: large;
-}
-.cadastro{
-    margin-top: 15px;
-}
-.cadastro a{
+    cursor: pointer;
+    font-family: Alata;
+    font-size: larger;
+  }
+  
+  .card span {
+    color: red;
+    position: absolute;
+    margin-top: 50px;
     font-size: small;
-    color: black;
-}
+  }

@@ -1,35 +1,52 @@
 import React from 'react'
+import { useForm } from "react-hook-form";
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+
+//Styles
 import styles from './Login.module.css'
-import {NavLink} from 'react-router-dom'
- 
-const Login = () => {
+
+const schema = yup.object({
+  email: yup.string().email("Digite um email válido").required("O email é obrigatório"),
+  password: yup.string().min(6, "A senha deve ter pelo menos 6 dígitos").required("A senha é obrigatório"),
+}).required();
+
+const Register = () => {
+
+  const { 
+    register, 
+    handleSubmit, 
+    formState: { errors } 
+  } = useForm({
+    resolver: yupResolver(schema)
+  });
+
+  function onSubmit(userData){
+    console.log(userData)
+  }
+
   return (
     <div className={styles.back}>
-      <form className={styles.card}>
+      <form className={styles.card} onSubmit={handleSubmit(onSubmit)}>
 
-        <h1>LOGIN</h1>
-        
-        <div className={styles.inputs}>
+      <h1>Login</h1>
 
-          <label htmlFor="email"><h3>Email:</h3></label>
-          <input type="text" className='email' placeholder='Digite o email da conta' />
+      <label>
+        Email
+        <input type="text" {...register("email", { required: true })} />
+        <span>{errors.email?.message}</span>
+      </label>
 
-          <label htmlFor="senha"><h3>Senha:</h3></label>
-          <input type="text" className='senha' placeholder='Digite a senha da conta' />
+      <label>
+        Senha
+        <input type="password" {...register("password", { required: true })} />
+        <span>{errors.password?.message}</span>
+      </label>
 
-        </div>
-
-        <div className={styles.button}>
-          <NavLink to="/">Entrar</NavLink>
-        </div>
-
-        <div className={styles.cadastro}>
-          <NavLink to="/cadastro">Abra sua conta</NavLink>
-        </div>
-
-      </form>
+      <button type="submit">Entrar</button>
+    </form>
     </div>
   )
 }
 
-export default Login
+export default Register

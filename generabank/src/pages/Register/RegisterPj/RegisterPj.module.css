@@ -9,54 +9,52 @@
     height: 100%;
     position: absolute;
 }
-.card{
-    width: 400px;
-    margin: auto;
-    margin-top: 20px;
-    border: 2px solid black;
-    padding: 20px;
-    border-radius: 10px;
-    font-family: Alata;
-    backdrop-filter: blur(15px);
-}
-.card h1{  
-    text-align: center;
-    margin-bottom: 10px;
-}
-.link{
+.card {
+    height: 667px;
+    width: 600px;
+    margin-left:390px;
     display: flex;
-    justify-content: right;
-    margin: 10px;
-}
-.link a{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    backdrop-filter: blur(10px);
+  }
+  .link a{
+    font-family: Atala;
     color: black;
-}
-.inputs{
-    display: grid;
-}
-.inputs input{
-    width: 300px;
-    margin-left: 30px;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    border: 2px solid black;
-    border-radius: 10px;
-    font-weight: bold;
-    padding: 6px 16px;
-    background-color: transparent;
-}
-.button{
-    display: grid;
-}
-.button a{
-    margin: 10px;
-    padding: 6px;
+
+  }
+ 
+  .card label {
+    display: flex;
+    flex-direction: column;
     font-family: Alata;
-    font-size: large;
+  }
+  
+  .card input {
+    border-radius: 5px;
+    border: 1px solid black;
+    height: 25px;
+    width: 300px;
+    background-color: transparent;
+  }
+  
+  .card button {
+    width: 300px;
+    height: 40px;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
     cursor: pointer;
-    text-align: center;
-    color: black;
-    border: 2px solid black;
-    border-radius: 10px;
-    text-decoration: none;
-}
+    font-family: Alata;
+    font-size: larger;
+  }
+  
+  .card span {
+    color: red;
+    position: absolute;
+    margin-top: 50px;
+    font-size: small;
+  }
