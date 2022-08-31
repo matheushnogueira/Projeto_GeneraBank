@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
@@ -44,6 +45,11 @@ const Register = () => {
       </label>
 
       <button type="submit">Entrar</button>
+
+    <div>
+      <NavLink to='/register'>Cadastre-se já</NavLink>
+    </div>
+    
     </form>
     </div>
   )

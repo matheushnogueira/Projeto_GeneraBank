@@ -20,19 +20,14 @@
     gap: 30px;
     backdrop-filter: blur(10px);
   }
-  .link a{
-    font-family: Atala;
-    color: black;
-
-  }
  
-  .card label {
+.card label {
     display: flex;
     flex-direction: column;
     font-family: Alata;
   }
   
-  .card input {
+.card input {
     border-radius: 5px;
     border: 1px solid black;
     height: 25px;
@@ -40,7 +35,7 @@
     background-color: transparent;
   }
   
-  .card button {
+.card button {
     width: 300px;
     height: 40px;
     background-color: transparent;
@@ -52,9 +47,14 @@
     font-size: larger;
   }
   
-  .card span {
+.card span {
     color: red;
     position: absolute;
     margin-top: 50px;
     font-size: small;
   }
+
+.card div a{
+  color: black;
+  font-family: Alata;
+}
