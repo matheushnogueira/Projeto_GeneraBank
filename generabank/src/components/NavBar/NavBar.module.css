@@ -19,6 +19,8 @@
 }
 li{
     margin-right: 1em;
+    padding: 10px;
+    border-radius: 10px;
 }
 li a{
     color: black;

@@ -1,17 +1,14 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import styles from './Register.module.css'
+import styles from './RegisterPj.module.css'
 
-const Register = () => {
+const RegisterPj = () => {
 
   return (
     <div className={styles.back}>
       <form className={styles.card}>
 
-        <h1>Para Você</h1>
-        
-        
-        <span className={styles.link}><NavLink to="/registerpj">Conta empresa</NavLink></span>
+        <h1>Para sua empresa</h1>
 
         <div className={styles.inputs}>
 
@@ -21,18 +18,18 @@ const Register = () => {
           </label>
 
           <label>
-            <span>CPF:</span>
-            <input type="cpf" name='CPF' placeholder='Digite seu CPF' />
+            <span>CNPJ:</span>
+            <input type="cpf" name='CPF' placeholder='Digite o CNPJ' />
           </label>
 
           <label>
-            <span>Email:</span>
-            <input type="email" name='email' placeholder='Digite seu email' />
+            <span>Email da empresa:</span>
+            <input type="email" name='email' placeholder='Digite o email da empresa' />
           </label>
 
           <label>
-            <span>Telefone:</span>
-            <input type="telefone" name='telefone' placeholder='Digite seu telefone' />
+            <span>Telefone para contato:</span>
+            <input type="telefone" name='telefone' placeholder='Digite o telefone' />
           </label>
 
           <label>
@@ -50,4 +47,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default RegisterPj

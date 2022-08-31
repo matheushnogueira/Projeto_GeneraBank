@@ -14,7 +14,7 @@ const NavBar = () => {
 
         <ul className={styles.list}>
             <li><NavLink to="/login">Login</NavLink></li>
-            <li><NavLink to="/cadastro">Cadastre-se</NavLink></li>
+            <li><NavLink to="/register">Cadastre-se</NavLink></li>
         </ul>
             
     </nav>

@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
 
 .card{
-    margin-bottom: 80px;
+    background-image: url(../../assets/ImagemHome.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    position: absolute;
 }
 .text{
     display: flex;
@@ -13,7 +19,7 @@
     color: hsla(0, 0%, 14%, 1);
 }
 .button{
-    padding-top: 50px;
+    margin-top: 20px;
     margin-left: 80px;  
 }
 .button a{
