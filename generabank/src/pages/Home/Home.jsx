@@ -18,7 +18,7 @@ const Home = () => {
 
        <div className={styles.button}>
           <h1>
-            <NavLink to="/cadastro">Abra sua conta</NavLink>
+            <NavLink to="/register">Abra sua conta</NavLink>
           </h1>
         </div>
       </div> 

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
 
-.back{
+#login{
     background-image: url(../../assets/ImagemHome.jpg);
     background-size: cover;
     background-position: center;
@@ -9,25 +9,25 @@
     height: 100%;
     position: absolute;
 }
-.card {
+.form {
     height: 667px;
     width: 400px;
-    margin-left:460px;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 30px;
     backdrop-filter: blur(10px);
-  }
- 
-.card label {
-    display: flex;
-    flex-direction: column;
     font-family: Alata;
   }
+ 
+.form label {
+    display: flex;
+    flex-direction: column;
+  }
   
-.card input {
+.form input {
     border-radius: 5px;
     border: 1px solid black;
     height: 25px;
@@ -35,7 +35,7 @@
     background-color: transparent;
   }
   
-.card button {
+.actions button{
     width: 300px;
     height: 40px;
     background-color: transparent;
@@ -47,14 +47,14 @@
     font-size: larger;
   }
   
-.card span {
+.form span {
     color: red;
     position: absolute;
     margin-top: 50px;
     font-size: small;
   }
 
-.card div a{
+.form div a{
   color: black;
   font-family: Alata;
 }

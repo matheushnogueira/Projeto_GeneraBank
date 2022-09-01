@@ -1,62 +1,59 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import { useForm } from "react-hook-form";
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
-import { useContext } from 'react';
+import { useState, useContext } from 'react';
 import { AuthContext } from '../../contexts/auth';
 
-//Styles
-import styles from './Login.module.css'
+import styles from "./Login.module.css"
 
-
-const schema = yup.object({
-  email: yup.string().email("Digite um email válido").required("O email é obrigatório"),
-  password: yup.string().min(6, "A senha deve ter pelo menos 6 dígitos").required("A senha é obrigatório"),
-}).required();
 
 const LoginPage = () => {
-  const { autheticated, login } = useContext(AuthContext)
+  const { authenticated, login } = useContext(AuthContext);
 
-  const { 
-    register, 
-    handleSubmit, 
-    formState: { errors } 
-  } = useForm({
-    resolver: yupResolver(schema)
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  function onSubmit(userData){
-    console.log(userData)
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("submit", { email, password });
+
+    login(email, password);
+  };
 
   return (
-    <div className={styles.back}>
-      <form className={styles.card} onSubmit={handleSubmit(onSubmit)}>
+    <div id={styles.login}>
+      <form className={styles.form} onSubmit={handleSubmit}>
 
-      <h1>Login</h1>
+        <h1 className={styles.title}>Login</h1>
 
-      <label>
-        Email
-        <input type="text" {...register("email", { required: true })} />
-        <span>{errors.email?.message}</span>
-      </label>
-
-      <label>
-        Senha
-        <input type="password" {...register("password", { required: true })} />
-        <span>{errors.password?.message}</span>
-      </label>
-
-      <button type="submit">Entrar</button>
-
-    <div>
-      <NavLink to='/register'>Cadastre-se já</NavLink>
+        <div className={styles.field}>
+          <label htmlFor="email">Email</label>
+          <input 
+          type="email" 
+          name="email" 
+          id="email" 
+          value={email} 
+          onChange={(e) => setEmail(e.target.value) } 
+          />
+        </div>
+        <div className={styles.field}>
+          <label htmlFor="passaword">Senha</label>
+          <input 
+          type="password" 
+          name="password" 
+          id="password"
+          value={password} 
+          onChange={(e) => setPassword(e.target.value) }
+          />
+        </div>
+        <div className={styles.actions}>
+          <button type="submit">Entrar</button>
+        </div>
+        <div className={styles.field}>
+          <NavLink to="/register">Cadastre-se já</NavLink>
+        </div>
+      </form>
     </div>
-    
-    </form>
-    </div>
-  )
-}
+  );
+};
 
 export default LoginPage

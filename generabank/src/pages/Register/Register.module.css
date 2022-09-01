@@ -9,6 +9,7 @@
     height: 100%;
     position: absolute;
 }
+
 .card {
     height: 667px;
     width: 600px;
@@ -19,17 +20,20 @@
     align-items: center;
     gap: 30px;
     backdrop-filter: blur(10px);
+    font-family: Alata;
+  }
+  
+  .link p{
+    font-family: Atala;
   }
   .link a{
-    font-family: Atala;
     color: black;
-
   }
  
   .card label {
     display: flex;
     flex-direction: column;
-    font-family: Alata;
+  
   }
   
   .card input {
