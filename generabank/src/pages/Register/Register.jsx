@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { cpf, cnpj} from 'cpf-cnpj-validator';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import  axios  from "axios"
+//import  axios  from "axios"
 
 //Styles
 import styles from './Register.module.css'

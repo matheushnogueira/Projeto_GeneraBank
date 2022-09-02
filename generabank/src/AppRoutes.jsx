@@ -7,12 +7,20 @@ import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
 import Transfer from './pages/Transfer/Transfer';
+import Deposit from './pages/Deposit/Deposit'
+import Withdraw from './pages/Withdraw/Withdraw'
+import Ticket from './pages/Ticket/Ticket'
+import PayTicket from './pages/PayTicket/PayTicket'
 //Contexts
 import { AuthProvider, AuthContext } from './contexts/auth';
 
 const AppRoutes = () => {
    const Private = ({children}) =>{
-      const { authenticated } = useContext(AuthContext);
+      const { authenticated, loading} = useContext(AuthContext);
+
+      if(loading){
+        return <div className='loading'>Carregando...</div>
+      }
 
       if(!authenticated){
         return <Navigate to="/login" />;
@@ -22,13 +30,17 @@ const AppRoutes = () => {
 
   return (
     <BrowserRouter>
-    <NavBar />
     <AuthProvider>
+    <NavBar />
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/register" element={<Register />} /> 
         <Route exact path="/transfer" element={<Private> <Transfer /> </Private>} />
+        <Route exact path="/deposit" element={<Private> <Deposit /> </Private>} />
+        <Route exact path="/withdraw" element={<Private> <Withdraw /> </Private>} />
+        <Route exact path="/ticket" element={<Private> <Ticket /> </Private>} />
+        <Route exact path="/payticket" element={<Private> <PayTicket /> </Private>} />
       </Routes>
     </AuthProvider>
     </BrowserRouter>

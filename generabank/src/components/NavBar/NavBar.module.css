@@ -33,3 +33,20 @@ li a:hover{
     padding: 10px;
     border-radius: 10px;
 }
+li button{
+    margin-right: 1em;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: large;
+    font-family: Alata;
+    transition: all .2s ease-in;
+}
+li button:hover{
+    color: white;
+    background-color: #5d9d4e;
+    padding: 10px;
+    border-radius: 10px;
+}
