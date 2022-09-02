@@ -13,7 +13,7 @@
 .card {
     height: 667px;
     width: 600px;
-    margin-left:390px;
+    margin:auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -22,14 +22,11 @@
     backdrop-filter: blur(10px);
     font-family: Alata;
   }
+  .card .inputradio{
+    width: 30px;
+    height: 18px;
+  }
   
-  .link p{
-    font-family: Atala;
-  }
-  .link a{
-    color: black;
-  }
- 
   .card label {
     display: flex;
     flex-direction: column;
@@ -43,6 +40,7 @@
     width: 300px;
     background-color: transparent;
   }
+
   
   .card button {
     width: 300px;
@@ -61,4 +59,8 @@
     position: absolute;
     margin-top: 50px;
     font-size: small;
+  }
+  .card .radio{
+    margin: auto;
+    
   }

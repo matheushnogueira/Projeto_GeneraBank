@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { cpf, cnpj} from 'cpf-cnpj-validator';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
+import  axios  from "axios"
 
 //Styles
 import styles from './Register.module.css'
@@ -10,6 +11,7 @@ import styles from './Register.module.css'
 const schema = yup.object({
   name: yup.string().required("O nome é obrigatório"),
   document_number: yup.string().required().test((value) => cnpj.isValid(value) || cpf.isValid(value)),
+  document_type: yup.mixed().required("Escolha um tipo de conta"),
   email: yup.string().email("Digite um email válido").required("O email é obrigatório"),
   password: yup.string().min(6, "A senha deve ter pelo menos 6 dígitos").required("A senha é obrigatório"),
 }).required();
@@ -25,35 +27,46 @@ const Register = () => {
   } = useForm({
     resolver: yupResolver(schema)
   });
-  
-  function onSubmit(userData){
-    console.log(userData)
-  }
+
+  const addUser = data => console.log(data)
+    // axios.post("https://c187-179-108-104-153.sa.ngrok.io/api/form", 
+    // {
+    //   name: data.name, 
+    //   document_number: parseInt(data.document_number), 
+    //   document_type: data.document_type,
+    //   email: data.email,
+    //   password: data.password
+    // }
+    // ).then (() => {console.log(data)} )
 
   return (
     <div className={styles.back}>
-      <form className={styles.card} onSubmit={handleSubmit(onSubmit)}>
+      <form className={styles.card} onSubmit={handleSubmit(addUser)}>
 
       <h1>Abra sua conta</h1>
 
-      <div className='inputradio'>
+      <div>
         <input 
+        className={styles.inputradio}
         type='radio'
         name="document_type" 
         value={"CPF"}  
         {...register("document_type", { required: true })}
         onClick={(e) => setType(e.target.value)} />
-        <label htmlFor="document_typr">Para você</label>
+        Para você
+        <span className={styles.radio}>{errors.document_type?.message}</span>
       </div>
 
-      <div className='inputradio'>
+      <div>
         <input 
+        className={styles.inputradio}
         type='radio'
         name="document_type" 
         value={"CNPJ"} 
         {...register("document_type", { required: true })}
         onClick={(e) => setType(e.target.value)} />
-        <label htmlFor="document_type">Para sua empresa</label>
+        Para sua empresa
+        <span className={styles.radio}>{errors.document_type?.message}</span>
       </div>
     
       <label>
@@ -62,35 +75,35 @@ const Register = () => {
         <span>{errors.name?.message}</span>
       </label>
 
-      <div className='buttonType'>
+      <div className={styles.buttonType}>
         {type === "CPF" ? 
         <label>
           CPF/CNPJ
             <input 
-            type="text" 
+            type="number" 
             name='document_number'  
             placeholder='CPF'
             {...register("document_number", { required: true })} 
             />
-            {errors.CPF &&<span>Digite um CPF válido</span>}
+            {errors.document_number &&<span>Digite um CPF válido</span>}
         </label>
         : 
         <label>
           CPF/CNPJ
           <input 
-          type="text" 
+          type="number" 
           name='document_number' 
           placeholder='CNPJ'
           {...register("document_number", { required: true })} />
-          {errors.CNPJ &&<span>Digite um CNPJ válido</span>}
+          {errors.document_number &&<span>Digite um CNPJ válido</span>}
         </label>}
-  
+      </div>
+
       <label>
         Email
         <input type="text" name='email' {...register("email", { required: true })} />
         <span>{errors.email?.message}</span>
       </label>
-      </div>
 
       <label>
         Senha
