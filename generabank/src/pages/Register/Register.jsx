@@ -13,7 +13,13 @@ const schema = yup.object({
   document_number: yup.string().required().test((value) => cnpj.isValid(value) || cpf.isValid(value)),
   document_type: yup.mixed().required("Escolha um tipo de conta"),
   email: yup.string().email("Digite um email válido").required("O email é obrigatório"),
-  password: yup.string().min(6, "A senha deve ter pelo menos 6 dígitos").required("A senha é obrigatório"),
+  password: yup.string().min(6, "A senha deve ter pelo menos 6 dígitos").required(),
+  cep: yup.string().min(8, "CEP não é válido").max(8, "CEP não é válido").required(),
+  addreses: yup.string().required("Digite o logradouro"),
+  district: yup.string().required("Digite o bairro"),
+  number: yup.string().required("Digite o número"),
+  city: yup.string().required("Digite a cidade"),
+  state: yup.string().required("Digite o estado"),
 }).required();
 
 const Register = () => {
@@ -35,7 +41,13 @@ const Register = () => {
     //   document_number: parseInt(data.document_number), 
     //   document_type: data.document_type,
     //   email: data.email,
-    //   password: data.password
+    //   password: data.password,
+    //   cep: data.cep,
+    //   addreses: addreses.data,
+    //   district: district.data,
+    //   number: number.data,
+    //   city: city.data,
+    //   state: state.data,
     // }
     // ).then (() => {console.log(data)} )
 
@@ -112,6 +124,50 @@ const Register = () => {
       </label>
 
       <button type="submit">Cadastrar-se</button>
+    </form>
+    <form className={styles.card} onSubmit={handleSubmit(addUser)}>
+
+      <h1>Cadastre seu endereço</h1>
+      <label>
+        CEP
+        <input type="number" name='cep' {...register("cep", { required: true })} />
+        <span>{errors.cep?.message}</span>
+      </label>
+
+      <label>
+        Rua (Logradouro)
+        <input type="text" name='addreses' {...register("addreses", { required: true })} />
+        <span>{errors.addreses?.message}</span>
+      </label>
+
+      <label>
+        Bairro
+        <input type="text" name='district' {...register("district", { required: true })} />
+        <span>{errors.district?.message}</span>
+      </label>
+
+      <label>
+        Complemento
+        <input type="text" name='complement' {...register("complement")} />
+      </label>
+
+      <label>
+        Número
+        <input type="number" name='number' {...register("number", { required: true })} />
+        <span>{errors.number?.message}</span>
+      </label>
+
+      <label>
+        Cidade
+        <input type="text" name='city' {...register("city", { required: true })} />
+        <span>{errors.city?.message}</span>
+      </label>
+
+      <label>
+        Estado
+        <input type="text" name='state' {...register("state", { required: true })} />
+        <span>{errors.state?.message}</span>
+      </label>
     </form>
     </div>
   )
