@@ -1,7 +1,9 @@
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import { useContext } from 'react';
+
 //Components
 import NavBar from './components/NavBar/NavBar';
+
 //Pages
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
@@ -11,6 +13,7 @@ import Deposit from './pages/Deposit/Deposit'
 import Withdraw from './pages/Withdraw/Withdraw'
 import Ticket from './pages/Ticket/Ticket'
 import PayTicket from './pages/PayTicket/PayTicket'
+
 //Contexts
 import { AuthProvider, AuthContext } from './contexts/auth';
 

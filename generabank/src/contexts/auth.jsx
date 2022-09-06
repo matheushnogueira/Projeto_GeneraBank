@@ -20,7 +20,7 @@ export const AuthContext = createContext();
 
     const login =  async (email, password) => {
         console.log("login", {email, password});
-        const loggedUser = { id: "123, email"};
+        const loggedUser = { id: "123", email};
         // const response = await createSession(email, password);
 
         // console.log("login", response.data);
