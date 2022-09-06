@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { cpf, cnpj} from 'cpf-cnpj-validator';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-//import  axios  from "axios"
+import  axios  from "axios";
 
 //Styles
 import styles from './Register.module.css'
@@ -34,25 +34,25 @@ const Register = () => {
     resolver: yupResolver(schema)
   });
 
-  const addUser = data => console.log(data)
-    // axios.post("https://c187-179-108-104-153.sa.ngrok.io/api/form", 
-    // {
-    //   name: data.name, 
-    //   document_number: parseInt(data.document_number), 
-    //   document_type: data.document_type,
-    //   email: data.email,
-    //   password: data.password,
-    //   cep: data.cep,
-    //   addreses: addreses.data,
-    //   district: district.data,
-    //   number: number.data,
-    //   city: city.data,
-    //   state: state.data,
-    // }
-    // ).then (() => {console.log(data)} )
+  const addUser = data => 
+    axios.post("https://5cca-179-108-104-153.sa.ngrok.io/api/form", 
+    {
+      name: data.name, 
+      document_number: parseInt(data.document_number), 
+      document_type: data.document_type,
+      email: data.email,
+      password: data.password,
+      cep: parseInt(data.cep),
+      addreses: data.addreses,
+      district: data.district,
+      number: parseInt(data.number),
+      city: data.city,
+      state: data.state
+    }
+    ).then ((response) => {console.log(response.data)})
 
   return (
-    <div className={styles.back}>
+    <div className={styles.back} >
       <form className={styles.card} onSubmit={handleSubmit(addUser)}>
 
       <h1>Abra sua conta</h1>
@@ -128,6 +128,7 @@ const Register = () => {
     <form className={styles.card} onSubmit={handleSubmit(addUser)}>
 
       <h1>Cadastre seu endereço</h1>
+
       <label>
         CEP
         <input type="number" name='cep' {...register("cep", { required: true })} />

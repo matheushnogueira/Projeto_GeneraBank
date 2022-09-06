@@ -13,6 +13,7 @@ import Deposit from './pages/Deposit/Deposit'
 import Withdraw from './pages/Withdraw/Withdraw'
 import Ticket from './pages/Ticket/Ticket'
 import PayTicket from './pages/PayTicket/PayTicket'
+import Teste from './teste'
 
 //Contexts
 import { AuthProvider, AuthContext } from './contexts/auth';
@@ -44,6 +45,7 @@ const AppRoutes = () => {
         <Route exact path="/withdraw" element={<Private> <Withdraw /> </Private>} />
         <Route exact path="/ticket" element={<Private> <Ticket /> </Private>} />
         <Route exact path="/payticket" element={<Private> <PayTicket /> </Private>} />
+        <Route exact path="/teste" element={ <Teste /> } />
       </Routes>
     </AuthProvider>
     </BrowserRouter>
