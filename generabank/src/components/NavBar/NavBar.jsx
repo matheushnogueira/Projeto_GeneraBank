@@ -34,7 +34,7 @@ const NavBar = () => {
             <li><NavLink to="/login">Login</NavLink></li>
             <li><NavLink to="/register">Cadastre-se</NavLink></li>
           </>
-          }  
+          } 
         </ul>
             
     </nav>

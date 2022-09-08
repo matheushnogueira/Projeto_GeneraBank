@@ -35,7 +35,7 @@ const Register = () => {
   });
 
   const addUser = data => 
-    axios.post("https://5cca-179-108-104-153.sa.ngrok.io/api/form", 
+    axios.post("https://9c2e-179-108-104-153.sa.ngrok.io/api/form", 
     {
       name: data.name, 
       document_number: parseInt(data.document_number), 

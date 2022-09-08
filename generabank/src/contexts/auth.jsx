@@ -21,17 +21,17 @@ export const AuthContext = createContext();
     }, []);
 
     const login =  async (email, password) => {
-        const response = await createSession(email, password);
+        // const response = await createSession(email, password);
 
-        console.log("login", response.data);
+        // console.log("login", response.data);
 
         const loggedUser = response.data.user;
-        const token = response.data.token;
+        // const token = response.data.token;
 
         localStorage.setItem("user", JSON.stringify(loggedUser));
-        localStorage.setItem("token", token); 
+        // localStorage.setItem("token", token); 
 
-        api.defaults.headers.Authorization = ` Bearer ${token} `;
+        // api.defaults.headers.Authorization = ` Bearer ${token} `;
       
 
             setUser(loggedUser);

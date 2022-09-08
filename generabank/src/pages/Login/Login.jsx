@@ -1,26 +1,57 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom';
-import { useState, useContext } from 'react';
-import { AuthContext } from '../../contexts/auth';
+import { useState } from 'react';
+//import { AuthContext } from '../../contexts/auth';
 
 import styles from "./Login.module.css"
 
 
 const LoginPage = () => {
-  const { login } = useContext(AuthContext);
 
-  const [email, setEmail] = useState("");
+  // const { login } = useContext(AuthContext);
+
+  const [username, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  //const handleSubmit = (e) => {
+    // e.preventDefault();
   
-    login(email, password);
-  };
+     //login(email, password);
+  // };
+
+  const addLogin = async(data) => {
+   data.preventDefault();
+  console.log(username, password)
+
+    let user = {
+      username, 
+      password, 
+      client_id: "2", 
+      client_secret: "z3R6qsnvSV9D4V65AuLu7MRFWwVzmdlxSY8cr7pD", 
+      grant_type: "password"
+    }
+
+    await fetch("https://9c2e-179-108-104-153.sa.ngrok.io/oauth/token", 
+    {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(user)
+    })
+      .then(response =>{
+      return response.json();
+    })
+        .then(data => {
+      console.log(data);
+    })
+        .catch(erro => {
+      console.log(erro, 'erro')
+    })}
 
   return (
     <div id={styles.login}>
-      <form className={styles.form} onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={addLogin}>
 
         <h1 className={styles.title}>Login</h1>
 
@@ -30,7 +61,7 @@ const LoginPage = () => {
           type="email" 
           name="email" 
           id="email" 
-          value={email} 
+          value={username} 
           onChange={(e) => setEmail(e.target.value) } 
           />
         </div>
