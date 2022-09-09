@@ -37,7 +37,7 @@ export const AuthContext = createContext();
             navigate("/");
         };
 
-  const logout = () => {
+    const logout = () => {
     console.log("logout");
 
     localStorage.removeItem("user");
@@ -46,7 +46,7 @@ export const AuthContext = createContext();
     api.defaults.headers.Authorization = null;
     setUser(null)
     navigate("/")
-}
+    }
 
 
 

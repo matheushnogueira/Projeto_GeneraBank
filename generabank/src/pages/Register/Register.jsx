@@ -1,13 +1,14 @@
 import React, {useState} from 'react'
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import { cpf, cnpj} from 'cpf-cnpj-validator';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import  axios  from "axios";
 
 //Styles
 import styles from './Register.module.css'
+
 
 const schema = yup.object({
   name: yup.string().required("O nome é obrigatório"),
@@ -35,6 +36,7 @@ const Register = () => {
     resolver: yupResolver(schema)
   });
 
+  const navigate = useNavigate();
   const addUser = data =>
     axios.post("https://971b-179-108-104-153.sa.ngrok.io/api/form", 
     {
@@ -50,17 +52,10 @@ const Register = () => {
       city: data.city,
       state: data.state
     }
-    ).then ((response) => {console.log(response.data)})
-
-    const navigate = useNavigate();
-    const registered = () => {
-
-      console.log("registered");
+    ).then (
+      (response) => {console.log(response.data)},
       navigate("/login")
-    }
-    const handleregistered = () => {
-      registered()
-    }
+    );
 
   return (
     <div className={styles.back} >
@@ -134,7 +129,7 @@ const Register = () => {
         <span>{errors.password?.message}</span>
       </label>
 
-      <button type="submit" onClick={handleregistered}>Cadastrar-se</button>
+      <button type="submit" >Cadastrar-se</button>
 
     </form>
     <form className={styles.card} onSubmit={handleSubmit(addUser)}>
