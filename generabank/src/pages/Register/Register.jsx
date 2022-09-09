@@ -26,8 +26,8 @@ const schema = yup.object({
 
 const Register = () => {
 
+  const navigate = useNavigate();
   const [type, setType] = useState("CPF")
-
   const { 
     register, 
     handleSubmit, 
@@ -36,7 +36,6 @@ const Register = () => {
     resolver: yupResolver(schema)
   });
 
-  const navigate = useNavigate();
   const addUser = data =>
     axios.post("https://971b-179-108-104-153.sa.ngrok.io/api/form", 
     {
