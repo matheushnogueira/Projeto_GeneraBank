@@ -21,7 +21,7 @@ export const AuthContext = createContext();
     }, []);
 
     const login =  async ( username, password ) => {
-        const response = await createSession ( username,password );
+        const response = await createSession ( username, password );
 
         console.log("login", response.data);
 
@@ -47,6 +47,8 @@ export const AuthContext = createContext();
     setUser(null)
     navigate("/")
 }
+
+
 
     return(
     <AuthContext.Provider 

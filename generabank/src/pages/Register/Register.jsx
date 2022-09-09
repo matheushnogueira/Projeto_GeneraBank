@@ -2,6 +2,7 @@ import React, {useState} from 'react'
 import { useForm } from "react-hook-form";
 import { cpf, cnpj} from 'cpf-cnpj-validator';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { useNavigate } from "react-router-dom";
 import * as yup from "yup";
 import  axios  from "axios";
 
@@ -51,6 +52,16 @@ const Register = () => {
     }
     ).then ((response) => {console.log(response.data)})
 
+    const navigate = useNavigate();
+    const registered = () => {
+
+      console.log("registered");
+      navigate("/login")
+    }
+    const handleregistered = () => {
+      registered()
+    }
+
   return (
     <div className={styles.back} >
       <form className={styles.card} onSubmit={handleSubmit(addUser)}>
@@ -83,7 +94,7 @@ const Register = () => {
     
       <label>
         Nome
-        <input type="text" name='name' {...register("name", { required: true })} />
+        <input type="text" name='name' {...register("name", { required: true })}/>
         <span>{errors.name?.message}</span>
       </label>
 
@@ -123,7 +134,8 @@ const Register = () => {
         <span>{errors.password?.message}</span>
       </label>
 
-      <button type="submit">Cadastrar-se</button>
+      <button type="submit" onClick={handleregistered}>Cadastrar-se</button>
+
     </form>
     <form className={styles.card} onSubmit={handleSubmit(addUser)}>
 
