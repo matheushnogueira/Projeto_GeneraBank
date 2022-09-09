@@ -34,8 +34,8 @@ const Register = () => {
     resolver: yupResolver(schema)
   });
 
-  const addUser = data => 
-    axios.post("https://9c2e-179-108-104-153.sa.ngrok.io/api/form", 
+  const addUser = data =>
+    axios.post("https://971b-179-108-104-153.sa.ngrok.io/api/form", 
     {
       name: data.name, 
       document_number: parseInt(data.document_number), 

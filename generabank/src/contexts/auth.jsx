@@ -14,26 +14,33 @@ export const AuthContext = createContext();
         const token = localStorage.getItem("token");
 
         if(recoveredUser){
-            setUser(JSON.parse(recoveredUser));
+            setUser(recoveredUser);
             api.defaults.headers.Authorization = ` Bearer ${token} `;
         }
         setLoading(false);
     }, []);
 
-    const login =  async (email, password) => {
-        // const response = await createSession(email, password);
+    const login =  async (username, password, client_id, client_secret, grant_type) => {
+        const response = 
+        await createSession
+        (
+            username, 
+            password,
+            client_id,
+            client_secret,
+            grant_type
+        );
 
-        // console.log("login", response.data);
+        console.log("login", response.data);
 
-        const loggedUser = response.data.user;
-        // const token = response.data.token;
+        const loggedUser = response.data;
+        const token = response.data;
 
-        localStorage.setItem("user", JSON.stringify(loggedUser));
-        // localStorage.setItem("token", token); 
+        localStorage.setItem("user", loggedUser);
+        localStorage.setItem("token", token); 
 
-        // api.defaults.headers.Authorization = ` Bearer ${token} `;
+        api.defaults.headers.Authorization = ` Bearer ${token} `;
       
-
             setUser(loggedUser);
             navigate("/");
         };
