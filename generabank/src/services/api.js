@@ -2,9 +2,7 @@ import axios from "axios";
 
 export const api = axios.create({
   baseURL: "https://971b-179-108-104-153.sa.ngrok.io",
-  headers:{ 
-    'Access-Control-Allow-Origin' : '*',
-},
+  headers:{ 'Access-Control-Allow-Origin' : '*'},
   // /api/form
   // /oauth/token
 });
@@ -18,13 +16,3 @@ export const api = axios.create({
       client_secret: "z3R6qsnvSV9D4V65AuLu7MRFWwVzmdlxSY8cr7pD", 
       grant_type: "password"
     },);}
-
-
-
-// const handleSubmit = data => 
-  // axios.post("https://4e25-179-108-104-153.sa.ngrok.io/oauth/token", 
-  // {
-  //   email: data.email,
-  //   password: data.password
-  // }
-  // ).then ((response) => {console.log(response.data)})

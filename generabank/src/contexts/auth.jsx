@@ -20,16 +20,8 @@ export const AuthContext = createContext();
         setLoading(false);
     }, []);
 
-    const login =  async (username, password, client_id, client_secret, grant_type) => {
-        const response = 
-        await createSession
-        (
-            username, 
-            password,
-            client_id,
-            client_secret,
-            grant_type
-        );
+    const login =  async ( username, password ) => {
+        const response = await createSession ( username,password );
 
         console.log("login", response.data);
 
