@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { useState, useContext } from 'react';
 import { AuthContext } from '../../contexts/auth';
 
-import styles from "./Login.module.css"
 
+import styles from "./Login.module.css"
 
 const LoginPage = () => {
 
@@ -15,40 +15,9 @@ const LoginPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  
     login(username, password);
-  };
+  }
 
-  // const addLogin = async(e) => {
-  //   e.preventDefault();
-  //   console.log(username, password)
-  //   
-
-  //   let user = {
-  //     username, 
-  //     password, 
-  //     client_id: "2", 
-  //     client_secret: "z3R6qsnvSV9D4V65AuLu7MRFWwVzmdlxSY8cr7pD", 
-  //     grant_type: "password"
-  //   }
-
-  //   await fetch("https://9c2e-179-108-104-153.sa.ngrok.io/oauth/token", 
-  //   {
-  //     method: 'POST',
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     body: JSON.stringify(user)
-  //   })
-  //     .then(response =>{
-  //     return response.json();
-  //   })
-  //       .then(data => {
-  //     console.log(data);
-  //   })
-  //       .catch(erro => {
-  //     console.log(erro, 'erro')
-  //   })}
 
   return (
     <div id={styles.login}>
@@ -56,8 +25,8 @@ const LoginPage = () => {
 
         <h1 className={styles.title}>Login</h1>
 
-        <div className={styles.field}>
-          <label htmlFor="email">Email</label>
+          <label>
+          Email
           <input 
           type="email" 
           name="email" 
@@ -65,9 +34,10 @@ const LoginPage = () => {
           value={username} 
           onChange={(e) => setUsername(e.target.value) } 
           />
-        </div>
-        <div className={styles.field}>
-          <label htmlFor="passaword">Senha</label>
+          </label>
+
+          <label>
+          Senha
           <input 
           type="password" 
           name="password" 
@@ -75,7 +45,7 @@ const LoginPage = () => {
           value={password} 
           onChange={(e) => setPassword(e.target.value) }
           />
-        </div>
+          </label>
         <div className={styles.actions}>
           <button type="submit">Entrar</button>
         </div>

@@ -37,7 +37,7 @@ const Register = () => {
   });
 
   const addUser = data =>
-    axios.post("https://971b-179-108-104-153.sa.ngrok.io/api/form", 
+    axios.post("https://7660-179-108-104-153.sa.ngrok.io/api/form", 
     {
       name: data.name, 
       document_number: parseInt(data.document_number), 
@@ -53,8 +53,9 @@ const Register = () => {
     }
     ).then (
       (response) => {console.log(response.data)},
+      alert("Cadastro feito com sucesso"),
       navigate("/login")
-    );
+    )
 
   return (
     <div className={styles.back} >
