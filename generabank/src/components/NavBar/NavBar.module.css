@@ -1,63 +1,111 @@
 @import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
 
-.logo{
-    margin: 10px;
-    margin-left: 50px;
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 .navbar{
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    height: 75px;
     background-color: white;
     font-family: Alata;
+    position: relative;
+    z-index: 1;
+}
+.logo{
+    margin: 10px;
+    display: flex;
+    align-items: center;
 }
 .list{
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     list-style: none;
-    align-items: center;
-    padding-right: 10px;
+    align-items: center; 
 }
-li{
-    margin-right: 1em;
-    padding: 10px;
-    border-radius: 10px;
-}
-li a{
-    color: black;
+.transfer,
+.deposit,
+.withdraw,
+.ticket,
+.payticket,
+.logout,
+.login,
+.register{
     text-decoration: none;
-    transition: all .2s ease-in; 
+    color: black;
+    font-size: 20px;
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
 }
-li a:hover{
-    color: white;
-    background-color: #5d9d4e;
-    padding: 10px;
-    border-radius: 10px;
-}
-li button{
-    margin-right: 1em;
-    padding: 10px;
-    border-radius: 10px;
+.logout{
     border: none;
     background-color: transparent;
     cursor: pointer;
     font-size: large;
     font-family: Alata;
-    transition: all .2s ease-in;
 }
-li button:hover{
+.mobile_menu_icon{
+    display: none;
+}
+li:hover{
     color: white;
     background-color: #5d9d4e;
     padding: 10px;
     border-radius: 10px;
 }
+.logout:hover{
+    padding: 5px;
+    color: white;
+}
 
-@media only screen and (max-width: 768px){
-
-    .navbar .list{
-        flex-direction: column;
-        justify-content: space-around;
-        align-items: center; 
-      
-        width: 70%;
+@media screen and (max-width: 1000px){
+    .logo{
+        display: flex;
+        position: absolute;
+        margin-top: 15px;
+        left: 35px;
+    }
+    .list{
+        display: none;
+    }
+    .list_mobile{
+        display: block;
+        position: absolute;
+        list-style: none;
+        background-color: white;
+        left: 0;
+        top: 75px;
+        transition: all 0.5s ease-out;
+        width: 100%;
+    }
+    .transfer,
+    .deposit,
+    .withdraw,
+    .ticket,
+    .payticket,
+    .logout,
+    .login,
+    .register{
+        color: black;
+        text-align: center;
+        width: 100%;
+        transition: all 0.5s ease;
+    }
+    .mobile_menu_icon{
+        display: block;
+        position: absolute;
+        align-items: center;
+        cursor: pointer;
+        font-size: 30px;
+        color: #5d9d4e;
+        background-color: white;
+        border: none;
+        outline: none;
+        top: 23px;
+        right: 25px;
     }
 }

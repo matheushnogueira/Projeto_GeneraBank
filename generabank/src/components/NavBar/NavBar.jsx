@@ -1,42 +1,46 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import { NavLink} from 'react-router-dom'
 import styles from './NavBar.module.css'
 import logo from '../../assets/Logo_32.png'
-import { useContext } from 'react'
 import { AuthContext } from "../../contexts/auth"
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 const NavBar = () => {
-  const { authenticated, logout} = useContext(AuthContext)
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  const {authenticated, logout} = useContext(AuthContext)
   const handleLogout = () => {
     logout()
   }
-
+  
   return (
     <>
     <nav className={styles.navbar}>
-      
-        <div className={styles.logo}>
-          <NavLink to="/"><img src={logo} alt="" /></NavLink>
-        </div>
 
-        <ul className={styles.list}>
+        <NavLink className={styles.logo} to="/"><img src={logo} alt="" /></NavLink>
+
+        <ul className={isMobile ? (styles.list_mobile) : (styles.list)} onClick={() => setIsMobile(false)}>
+
           {authenticated ? 
           <>
-            <li><NavLink to="/transfer">Transferência</NavLink></li> 
-            <li><NavLink to="/deposit">Deposito</NavLink></li>
-            <li><NavLink to="/withdraw">Saque</NavLink></li>
-            <li><NavLink to="/ticket">Gerar boleto</NavLink></li>
-            <li><NavLink to="/payticket">Pagamento de  boleto</NavLink></li>
-            <li><button className={styles.button } onClick={handleLogout}>Sair</button></li>
+            <NavLink className={styles.transfer} to="/transfer"><li>Transferência</li></NavLink>
+            <NavLink className={styles.deposit } to="/deposit"><li>Depósito</li></NavLink>
+            <NavLink className={styles.withdraw} to="/withdraw"><li>Saque</li></NavLink>
+            <NavLink className={styles.ticket} to="/ticket"><li>Gerar boleto</li></NavLink>
+            <NavLink className={styles.payticket} to="/payticket"><li>Pagamento de  boleto</li></NavLink>
+           <li><button className={styles.logout} onClick={handleLogout}>Sair</button></li> 
           </>
           :
           <>
-            <li><NavLink to="/login">Login</NavLink></li>
-            <li><NavLink to="/register">Cadastre-se</NavLink></li>
+            <NavLink className={styles.login} to="/login"><li>Login</li></NavLink>
+            <NavLink className={styles.register} to="/register"><li>Cadastre-se</li></NavLink>
           </>
-        }
+          }
         </ul>
-            
+        <button className={styles.mobile_menu_icon} onClick={() => setIsMobile(!isMobile)}>
+          {isMobile ? (<FaTimes/>) : (<FaBars/>)}
+        </button>
     </nav>
     </>
   )

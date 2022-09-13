@@ -20,7 +20,7 @@ const LoginPage = () => {
 
 
   return (
-    <div id={styles.login}>
+    <div className={styles.back}>
       <form className={styles.form} onSubmit={handleSubmit}>
 
         <h1 className={styles.title}>Login</h1>

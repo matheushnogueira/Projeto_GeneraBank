@@ -129,8 +129,6 @@ const Register = () => {
         <span>{errors.password?.message}</span>
       </label>
 
-      <button type="submit" >Cadastrar-se</button>
-
     </form>
     <form className={styles.card} onSubmit={handleSubmit(addUser)}>
 
@@ -176,6 +174,9 @@ const Register = () => {
         <input type="text" name='state' {...register("state", { required: true })} />
         <span>{errors.state?.message}</span>
       </label>
+
+      <button type="submit" >Cadastrar-se</button>
+      
     </form>
     </div>
   )
