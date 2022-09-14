@@ -13,13 +13,14 @@ import Deposit from './pages/Deposit/Deposit'
 import Withdraw from './pages/Withdraw/Withdraw'
 import Ticket from './pages/Ticket/Ticket'
 import PayTicket from './pages/PayTicket/PayTicket'
+import PageUser from './pages/Pageuser/PageUser'
 
 //Contexts
 import { AuthProvider, AuthContext } from './contexts/auth';
 
 const AppRoutes = () => {
    const Private = ({children}) =>{
-      const {loading} = useContext(AuthContext);
+      const {authenticated, loading} = useContext(AuthContext);
 
       if(loading){
         return <div className='loading'>Carregando...</div>
@@ -44,6 +45,7 @@ const AppRoutes = () => {
         <Route exact path="/withdraw" element={<Private> <Withdraw /> </Private>} />
         <Route exact path="/ticket" element={<Private> <Ticket /> </Private>} />
         <Route exact path="/payticket" element={<Private> <PayTicket /> </Private>} />
+        <Route exact path='/pageuser' element={<Private> <PageUser /> </Private>} />
       </Routes>
     </AuthProvider>
     </BrowserRouter>
