@@ -14,8 +14,8 @@ export const AuthContext = createContext();
         const token = localStorage.getItem("token");
 
         if(recoveredUser){
-            setUser(recoveredUser);
-            createSession.defaults.headers.Authorization = ` Bearer ${token} `;
+            setUser(JSON.parse(recoveredUser));
+            api.defaults.headers.Authorization = ` Bearer ${token} `;
         }
         setLoading(false);
     }, []);
@@ -28,10 +28,10 @@ export const AuthContext = createContext();
         const loggedUser = response.data;
         const token = response.data;
 
-        localStorage.setItem("user", loggedUser);
+        localStorage.setItem("user", JSON.stringify(loggedUser));
         localStorage.setItem("token", token); 
 
-        createSession.defaults.headers.Authorization = ` Bearer ${token} `;
+        api.defaults.headers.Authorization = ` Bearer ${token} `;
       
             setUser(loggedUser);
             navigate("/pageuser");
@@ -43,7 +43,7 @@ export const AuthContext = createContext();
     localStorage.removeItem("user");
     localStorage.removeItem("token");
 
-    createSession.defaults.headers.Authorization = null;
+    api.defaults.headers.Authorization = null;
     setUser(null)
     navigate("/")
     }

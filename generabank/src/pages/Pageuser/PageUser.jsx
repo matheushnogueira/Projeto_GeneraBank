@@ -1,25 +1,32 @@
 import React from 'react'
 import axios from 'axios'
-import { useEffect } from 'react'
-import { showUser } from '../../services/api'
+import { useEffect, useState } from 'react'
+import { userAccount } from '../../services/api'
 
 
 import styles from "./PageUser.module.css"
 
 const PageUser = () => {
 
+  const [users, setUsers] = useState([]);
+  const [loading, setLoading] = useState(true);
+
      useEffect(() => {
-        axios.get("https://7136-179-108-104-153.sa.ngrok.io/api/show/2")
-       .then((response) => {
-         console.log(response);
-      })
-      .catch((err) => {
-        console.error("ops! ocorreu um erro : " + err);
-      });
-  }, []);
+      (async () => {
+        const response = await userAccount();
+        setUsers(response.data);
+        setLoading(false);
+      })();
+     }, []);
+
+     if(loading){
+      return <div className='loading'>Carregando dados...</div>;
+     }   
     
   return (
-    <div>PageUser</div>
+    <>
+      <div>PageUser</div> 
+    </>
   )
 }
 
