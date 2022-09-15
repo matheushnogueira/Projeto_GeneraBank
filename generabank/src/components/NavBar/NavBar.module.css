@@ -51,22 +51,18 @@
 .mobile_menu_icon{
     display: none;
 }
-.transfer,
-.deposit,
-.withdraw,
-.ticket,
-.payticket,
-.logout,
-.login,
-.register li:hover{
+.transfer:hover,
+.deposit:hover,
+.withdraw:hover,
+.ticket:hover,
+.payticket:hover,
+.logout:hover,
+.login:hover,
+.register:hover{
     color: white;
     background-color: #5d9d4e;
     padding: 10px;
     border-radius: 10px;
-}
-.logout:hover{
-    padding: 5px;
-    color: white;
 }
 
 @media screen and (max-width: 1000px){

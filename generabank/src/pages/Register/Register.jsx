@@ -62,7 +62,7 @@ const Register = () => {
       <form className={styles.card} onSubmit={handleSubmit(addUser)}>
 
       <h1>Abra sua conta</h1>
-
+    <div>
       <div>
         <input 
         className={styles.inputradio}
@@ -72,9 +72,7 @@ const Register = () => {
         {...register("document_type", { required: true })}
         onClick={(e) => setType(e.target.value)} />
         Para você
-        <span className={styles.radio}>{errors.document_type?.message}</span>
       </div>
-
       <div>
         <input 
         className={styles.inputradio}
@@ -84,9 +82,10 @@ const Register = () => {
         {...register("document_type", { required: true })}
         onClick={(e) => setType(e.target.value)} />
         Para sua empresa
+      </div>
         <span className={styles.radio}>{errors.document_type?.message}</span>
       </div>
-    
+
       <label>
         Nome
         <input type="text" name='name' {...register("name", { required: true })}/>

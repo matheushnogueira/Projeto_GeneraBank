@@ -25,7 +25,17 @@ const PageUser = () => {
     
   return (
     <>
-      <div>PageUser</div> 
+      <h1>PageUser</h1> 
+      {users.map((user, key) => {
+      return(
+         <div key={key}>
+          <ul>
+            <li>Email: {user.username}</li>
+          </ul>
+          </div>
+        )
+      })}
+      
     </>
   )
 }

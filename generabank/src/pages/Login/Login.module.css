@@ -64,9 +64,8 @@
   color: black;
   font-family: Alata;
 }
-@media only screen and (max-width: 768px){
-  .card {
-    margin-top: 10px;
-    width: 360px;
+@media screen and (max-width: 400px){
+  .form {
+    width: 350px;
   }
 }

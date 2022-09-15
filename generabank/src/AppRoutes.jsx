@@ -3,6 +3,7 @@ import { useContext } from 'react';
 
 //Components
 import NavBar from './components/NavBar/NavBar';
+import Footer from './components/Footer';
 
 //Pages
 import Home from './pages/Home/Home'
@@ -26,9 +27,9 @@ const AppRoutes = () => {
         return <div className='loading'>Carregando...</div>
       }
 
-      if(!authenticated){
-        return <Navigate to="/login" />;
-      };
+      // if(!authenticated){
+      //   return <Navigate to="/login" />;
+      // };
       return children;
    };
 
@@ -47,6 +48,7 @@ const AppRoutes = () => {
         <Route exact path="/payticket" element={<Private> <PayTicket /> </Private>} />
         <Route exact path='/pageuser' element={<Private> <PageUser /> </Private>} />
       </Routes>
+      <Footer />
     </AuthProvider>
     </BrowserRouter>
   )
