@@ -32,12 +32,12 @@ const NavBar = () => {
             <NavLink className={styles.payticket} to="/payticket"><li>Pagamento de  boleto</li></NavLink>
             <li><button className={styles.logout} onClick={handleLogout}>Sair</button></li> 
           </>
-          {/* :
-          <>
-            <NavLink className={styles.login} to="/login"><li>Login</li></NavLink>
-            <NavLink className={styles.register} to="/register"><li>Cadastre-se</li></NavLink>
-          </>
-          } */}
+          {/* // :
+          // <>
+          //   <NavLink className={styles.login} to="/login"><li>Login</li></NavLink>
+          //   <NavLink className={styles.register} to="/register"><li>Cadastre-se</li></NavLink>
+          // </>
+          // } */}
         </ul>
         <button className={styles.mobile_menu_icon} onClick={() => setIsMobile(!isMobile)}>
           {isMobile ? (<FaTimes/>) : (<FaBars/>)}

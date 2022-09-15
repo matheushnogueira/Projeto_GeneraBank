@@ -11,7 +11,7 @@ export const api = axios.create({
       username, 
       password, 
       client_id: "1", 
-      client_secret: "QXt2vJPxA7nvA1otiQYpnskqcjGCg3DcJWO3VhK7", 
+      client_secret: "V3hBo5ybMNdg8488u6r3LqhsjciaETKG6qSEMnYd", 
       grant_type: "password"
     },);}
 

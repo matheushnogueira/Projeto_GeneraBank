@@ -12,7 +12,7 @@ const PageUser = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get("https://d867-179-108-104-153.sa.ngrok.io/api/show/")
+    axios.get("https://d867-179-108-104-153.sa.ngrok.io/api/show")
     .then((response) => {
       console.log(response.data)
       // setUsers(response.data)
