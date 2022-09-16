@@ -31,7 +31,7 @@ export const AuthContext = createContext();
         localStorage.setItem("user", JSON.stringify(loggedUser));
         localStorage.setItem("token", token); 
 
-        api.defaults.headers.Authorization = ` Bearer ${token} `;
+        //api.defaults.headers.Authorization = ` Bearer ${token} `;
       
             setUser(loggedUser);
             navigate("/pageuser");
