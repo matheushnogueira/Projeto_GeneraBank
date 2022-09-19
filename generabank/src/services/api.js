@@ -2,7 +2,10 @@ import axios from "axios";
 
 
 export const api = axios.create({
-  baseURL: "https://741c-179-108-104-153.sa.ngrok.io",
+  baseURL: "https://325e-179-108-104-153.sa.ngrok.io",
+  headers: {
+    "ngrok-skip-browser-warning" : null
+  }
 });
 
   export const createSession = async (username, password) => {
@@ -11,11 +14,6 @@ export const api = axios.create({
       username, 
       password, 
       client_id: "1", 
-      client_secret: "bDjHxYH4OHLEWLunvPWhHhpKBtqZ8xIPb954BOHX", 
+      client_secret: "1nTG7BgWvYZj32V260X3FCSulPU5Mkltzuc9I87T", 
       grant_type: "password"
     },);}
-
-  // export const userAccount = async () => {
-  //   return api.get("/api/users")
-   
-  // }
