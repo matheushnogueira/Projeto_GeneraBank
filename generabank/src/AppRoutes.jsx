@@ -2,7 +2,7 @@ import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import { useContext } from 'react';
 
 //Components
-import NavBar from './components/NavBar/NavBar';
+import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 
 //Pages

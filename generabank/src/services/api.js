@@ -2,7 +2,7 @@ import axios from "axios";
 
 
 export const api = axios.create({
-  baseURL: "https://325e-179-108-104-153.sa.ngrok.io",
+  baseURL: "https://4dfb-179-108-104-153.sa.ngrok.io/",
   headers: {
     "ngrok-skip-browser-warning" : null
   }
@@ -14,6 +14,6 @@ export const api = axios.create({
       username, 
       password, 
       client_id: "1", 
-      client_secret: "1nTG7BgWvYZj32V260X3FCSulPU5Mkltzuc9I87T", 
+      client_secret: "01gC0n77wvtsQAMZC9mB6xVkOQcpXLdE719UVKb3", 
       grant_type: "password"
     },);}

@@ -1,8 +1,8 @@
 import React, { useContext, useState } from 'react'
 import { NavLink} from 'react-router-dom'
 import styles from './NavBar.module.css'
-import logo from '../../assets/Logo_32.png'
-import { AuthContext } from "../../contexts/auth"
+import logo from '../assets/Logo_32.png'
+import { AuthContext } from "../contexts/auth"
 import { FaBars, FaTimes } from 'react-icons/fa';
 
 const NavBar = () => {

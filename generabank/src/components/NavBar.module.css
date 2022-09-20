@@ -98,6 +98,17 @@
         width: 100%;
         transition: all 0.5s ease;
     }
+    .transfer:hover,
+    .deposit:hover,
+    .withdraw:hover,
+    .ticket:hover,
+    .payticket:hover,
+    .logout:hover,
+    .login:hover,
+    .register:hover{
+        color: black;
+        background-color: white;
+    }
     .mobile_menu_icon{
         display: block;
         position: absolute;

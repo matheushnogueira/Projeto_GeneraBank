@@ -19,8 +19,8 @@ const PageUser = () => {
 
     api.get("/api/show", header)
       .then((response) => {
-        console.log(response.data)
-        setAccount(response.data);
+        //console.log(response.data.data)
+        setAccount(response.data.data);
         setLoading(false)
       }).catch(() => {
         console.log("ERROR") 
@@ -29,7 +29,9 @@ const PageUser = () => {
       useEffect (() => {
         userAccount()
       },[])
- 
+
+  console.log(account)
+
   if(loading) {
     return <div className="loading">Carregando dados...</div>
   }
@@ -37,15 +39,14 @@ const PageUser = () => {
   return (
     <>
       <h1>PageUser</h1> 
-      <ul>
-          {
-            Object.values(account).map((user, key) => (
-            <li key={key}>
-              {user.accounts.balance}
-            </li>
-          ))
-          }
-      </ul>
+       <div>
+        {account.map((user, index) => {
+        return (
+          <div key={index}>
+            <h2>valor na conta: {user.account_balance}</h2>
+          </div>
+        );})}
+    </div>
     </>
   )
 }
