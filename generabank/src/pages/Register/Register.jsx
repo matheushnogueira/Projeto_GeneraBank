@@ -1,14 +1,13 @@
-import React, {useState} from 'react'
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { cpf, cnpj} from 'cpf-cnpj-validator';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from "yup";
-import { api } from "../../services/api";
+import {useState}       from 'react'
+import { useForm }      from "react-hook-form";
+import { useNavigate }  from "react-router-dom";
+import { cpf, cnpj}     from 'cpf-cnpj-validator';
+import { api }          from "../../services/api";
+import { yupResolver }  from '@hookform/resolvers/yup';
+import * as yup         from "yup";
 
 //Styles
-import styles from './Register.module.css'
-
+import styles           from './Register.module.css'
 
 const schema = yup.object({
   name: yup.string().required("O nome é obrigatório"),
@@ -26,65 +25,65 @@ const schema = yup.object({
 
 const Register = () => {
 
-  const navigate = useNavigate();
-  const [type, setType] = useState("CPF")
-  const { 
-    register, 
-    handleSubmit, 
-    formState: { errors } 
-  } = useForm({
-    resolver: yupResolver(schema)
-  });
+const [type, setType] = useState("CPF")
+const navigate = useNavigate();
+const { 
+  register, 
+  handleSubmit, 
+  formState: { errors } 
+} = useForm({
+  resolver: yupResolver(schema)
+});
 
-  const addUser = data =>
-    api.post("/api/form", 
-    {
-      name: data.name, 
-      document_number: parseInt(data.document_number), 
-      document_type: data.document_type,
-      email: data.email,
-      password: data.password,
-      cep: parseInt(data.cep),
-      addreses: data.addreses,
-      district: data.district,
-      number: parseInt(data.number),
-      city: data.city,
-      state: data.state
-    }
-    ).then (
-      (response) => {console.log(response.data)},
-      alert("Cadastro feito com sucesso"),
-      navigate("/login")
-    )
+const addUser = data =>
+  api.post("/api/form", 
+  {
+    name: data.name, 
+    document_number: parseInt(data.document_number), 
+    document_type: data.document_type,
+    email: data.email,
+    password: data.password,
+    cep: parseInt(data.cep),
+    addreses: data.addreses,
+    district: data.district,
+    number: parseInt(data.number),
+    city: data.city,
+    state: data.state
+  }).then ((response) => {console.log(response.data)},
+            alert("Cadastro feito com sucesso"),
+            navigate("/login"))
 
-  return (
-    <div className={styles.back} >
-      <form className={styles.card} onSubmit={handleSubmit(addUser)}>
+return (
+<div className={styles.back} >
+<form className={styles.card} onSubmit={handleSubmit(addUser)}>
 
-      <h1>Abra sua conta</h1>
-    <div>
-      <div>
-        <input 
-        className={styles.inputradio}
-        type='radio'
-        name="document_type" 
-        value={"CPF"}  
-        {...register("document_type", { required: true })}
-        onClick={(e) => setType(e.target.value)} />
-        Para você
-      </div>
-      <div>
-        <input 
-        className={styles.inputradio}
-        type='radio'
-        name="document_type" 
-        value={"CNPJ"} 
-        {...register("document_type", { required: true })}
-        onClick={(e) => setType(e.target.value)} />
-        Para sua empresa
-      </div>
-        <span className={styles.radio}>{errors.document_type?.message}</span>
-      </div>
+<h1>Abra sua conta</h1>
+<div>
+
+  <div>
+    <input 
+      className={styles.inputradio}
+      type='radio'
+      name="document_type" 
+      value={"CPF"}  
+      {...register("document_type", { required: true })}
+      onClick={(e) => setType(e.target.value)} />
+      Para você
+  </div>
+
+  <div>
+    <input 
+      className={styles.inputradio}
+      type='radio'
+      name="document_type" 
+      value={"CNPJ"} 
+      {...register("document_type", { required: true })}
+      onClick={(e) => setType(e.target.value)} />
+      Para sua empresa
+  </div>
+
+<span className={styles.radio}>{errors.document_type?.message}</span>
+</div>
 
       <label>
         Nome
