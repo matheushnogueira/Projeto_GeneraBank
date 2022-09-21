@@ -39,14 +39,6 @@ const PageUser = () => {
   return (
     <>
       <h1>PageUser</h1> 
-       <div>
-        {account.map((user, index) => {
-        return (
-          <div key={index}>
-            <h2>valor na conta: {user.account_balance}</h2>
-          </div>
-        );})}
-    </div>
     </>
   )
 }

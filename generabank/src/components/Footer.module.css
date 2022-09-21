@@ -6,6 +6,8 @@
     justify-content: center;
     background-color: white;
     font-family: Alata;
+    position: relative;
+    z-index: 1;
   }
   @media screen and (max-width: 600px){
     .footer{

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { cpf, cnpj} from 'cpf-cnpj-validator';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import  axios  from "axios";
+import { api } from "../../services/api";
 
 //Styles
 import styles from './Register.module.css'
@@ -37,7 +37,7 @@ const Register = () => {
   });
 
   const addUser = data =>
-    axios.post("https://7cd2-179-108-104-153.sa.ngrok.io/api/form", 
+    api.post("/api/form", 
     {
       name: data.name, 
       document_number: parseInt(data.document_number), 
@@ -118,7 +118,10 @@ const Register = () => {
 
       <label>
         Email
-        <input type="text" name='email' {...register("email", { required: true })} />
+        <input 
+        type="text" 
+        name='email' 
+        {...register("email", { required: true })} />
         <span>{errors.email?.message}</span>
       </label>
 

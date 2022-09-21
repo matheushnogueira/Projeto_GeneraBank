@@ -27,9 +27,9 @@ const AppRoutes = () => {
         return <div className='loading'>Carregando...</div>
       }
 
-      if(!authenticated){
-        return <Navigate to="/login" />;
-      };
+      // if(!authenticated){
+      //   return <Navigate to="/login" />;
+      // };
       return children;
    };
 
