@@ -4,6 +4,7 @@ import * as yup        from "yup";
 import { useForm }     from 'react-hook-form';
 import { api }         from '../../services/api';
 
+//Styles
 import styles          from "./Transfer.module.css"
 
 const schema = yup.object({
@@ -19,13 +20,21 @@ const Transfer = () => {
 
   const {register, handleSubmit, formState: { errors }} = useForm({resolver: yupResolver(schema)});
 
-  const valueTransfer = data =>
-    api.post("", {
+  const user = JSON.parse(localStorage.getItem("user"))
 
-    }).then(
-      (response) => {console.log(response.data)}
-    )
+  const valueTransfer = data => {
+  const header= {
+    headers: {
+      "ngrok-skip-browser-warning" : null,  
+      Authorization: ` Bearer ${user.access_token} `
+  }};
 
+  api.post("/api/transfer", 
+  {
+    account_Totransfer: data.account_Totransfer,
+    value_transfer: data.value_transfer
+  }, header)}
+  
   return (
   <div className={styles.back}>
     <form className={styles.card} onSubmit={handleSubmit(valueTransfer)}>
@@ -46,7 +55,7 @@ const Transfer = () => {
         </label>
 
         <label>
-          Conta e Dígito
+          Conta
           <input type="number"name='account_Totransfer'{...register("account_Totransfer", { required: true})}/>
           <span>{errors.account_number?.message}</span>
         </label>
