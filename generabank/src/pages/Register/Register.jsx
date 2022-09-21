@@ -49,9 +49,11 @@ const addUser = data =>
     number: parseInt(data.number),
     city: data.city,
     state: data.state
-  }).then ((response) => {console.log(response.data)},
-            alert("Cadastro feito com sucesso"),
-            navigate("/login"))
+  }).then (
+    (response) => {console.log(response.data)},
+    alert("Cadastro feito com sucesso"),
+    navigate("/login")
+  )
 
 return (
 <div className={styles.back} >

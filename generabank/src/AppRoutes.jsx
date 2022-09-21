@@ -2,36 +2,37 @@ import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
 import { useContext } from 'react';
 
 //Components
-import NavBar from './components/NavBar';
-import Footer from './components/Footer';
+import NavBar     from './components/NavBar';
+import Footer     from './components/Footer';
 
 //Pages
-import Home from './pages/Home/Home'
-import Login from './pages/Login/Login'
-import Register from './pages/Register/Register'
-import Transfer from './pages/Transfer/Transfer';
-import Deposit from './pages/Deposit/Deposit'
-import Withdraw from './pages/Withdraw/Withdraw'
-import Ticket from './pages/Ticket/Ticket'
-import PayTicket from './pages/PayTicket/PayTicket'
-import PageUser from './pages/Pageuser/PageUser'
+import Home       from './pages/Home/Home'
+import Login      from './pages/Login/Login'
+import Register   from './pages/Register/Register'
+import Transfer   from './pages/Transfer/Transfer';
+import Deposit    from './pages/Deposit/Deposit'
+import Withdraw   from './pages/Withdraw/Withdraw'
+import Ticket     from './pages/Ticket/Ticket'
+import PayTicket  from './pages/PayTicket/PayTicket'
+import PageUser   from './pages/Pageuser/PageUser'
 
 //Contexts
 import { AuthProvider, AuthContext } from './contexts/auth';
 
 const AppRoutes = () => {
-   const Private = ({children}) =>{
-      const {authenticated, loading} = useContext(AuthContext);
 
-      if(loading){
-        return <div className='loading'>Carregando...</div>
-      }
+  const Private = ({children}) =>{
+  const {authenticated, loading} = useContext(AuthContext);
 
-      // if(!authenticated){
-      //   return <Navigate to="/login" />;
-      // };
-      return children;
-   };
+  if(loading){
+    return <div className='loading'>Carregando...</div>
+  }
+
+  // if(!authenticated){
+  //   return <Navigate to="/login" />;
+  // };
+    return children;
+  };
 
   return (
     <BrowserRouter>
