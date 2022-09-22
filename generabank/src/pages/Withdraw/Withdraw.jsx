@@ -7,26 +7,29 @@ import { api } from '../../services/api';
 import styles from "./Withdraw.module.css"
 
 const schema = yup.object({
-  document_number: yup.string().required("Informe o documento da conta").test((value) => cnpj.isValid(value) || cpf.isValid(value)),
-  agency: yup.string().required("Informe a agência"),
+  // document_number: yup.string().required("Informe o documento da conta").test((value) => cnpj.isValid(value) || cpf.isValid(value)),
+  //agency: yup.string().required("Informe a agência"),
   account_number: yup.string().min(16,"Informe uma conta válida").required(),
   value:  yup.string().required("Informe o valor a ser sacado"),
 }).required();
 
 const Withdraw = () => {
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm({resolver: yupResolver(schema)});
+  const { register, handleSubmit,formState: { errors }} = useForm({resolver: yupResolver(schema)});
+  const user = JSON.parse(localStorage.getItem("user"))
 
-  const valueWithdraw = data =>
-    api.post("", {
-
-    }).then(
-      (response) => {console.log(response.data)}
-    )
+  const valueWithdraw = data =>{
+    const header= {
+      headers: {
+        "ngrok-skip-browser-warning" : null,  
+        Authorization: ` Bearer ${user.access_token} `
+    }};
+  
+    api.post("", 
+    {
+     
+    }, header)}
+  
 
   return (
     <div className={styles.back}>
@@ -34,7 +37,7 @@ const Withdraw = () => {
 
       <h1>Saque</h1>
 
-        <label>
+        {/* <label>
           CPF ou CNPJ
           <input 
             type="number"
@@ -42,10 +45,10 @@ const Withdraw = () => {
             {...register("document_number", { required: true})}
            />
            <span>{errors.document_number?.message}</span>
-        </label>
+        </label> */}
 
         <div className={styles.agency}>
-        <label>
+        {/* <label>
           Agência
           <input 
             type="number"
@@ -53,7 +56,8 @@ const Withdraw = () => {
             {...register("agency", { required: true})}
           />
           <span>{errors.agency?.message}</span>
-        </label>
+        </label> */}
+
         <label>
           Conta e Dígito
           <input 

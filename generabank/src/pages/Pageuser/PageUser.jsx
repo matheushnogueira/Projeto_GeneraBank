@@ -3,8 +3,8 @@ import { useState } from "react"
 import { api } from "../../services/api";
 
 import styles from './PageUser.module.css'
-import { FaEye, FaEyeSlash }      from 'react-icons/fa'
-
+import { FaEye, FaEyeSlash, FaUserCircle} from 'react-icons/fa'
+import { BsGearFill } from 'react-icons/bs'
 
 const PageUser = () => {
 
@@ -21,7 +21,7 @@ const PageUser = () => {
         Authorization: ` Bearer ${user.access_token} `
       }};
 
-    api.get("", header)
+    api.get("/api/show", header)
       .then((response) => {
         setAccount([response.data]);
         setLoading(false)
@@ -43,31 +43,34 @@ const PageUser = () => {
 
   return (
     <div className={styles.back}> 
-      <div>
-      {account.map((user, key) => (
-        <div className={styles.userData}>
-          <p key={key}>Usuário: {user.userName}</p>
-          <p key={key}>Email de cadastro: {user.email}</p>
+      <>
+        {account.map((user, key) => (
+        <div key={key} className={styles.userData}>
+          <FaUserCircle className={styles.userIcon}/>
+          <h2>{user.userName}</h2>
+          <p>CPF/CNPJ: {user.cpf}</p>
+          <p>Agência: {user.agency_id}</p>
+          <p>Número da conta: {user.accounts_number}</p>
+            
           <div className={styles.accountData}>
-            <h3 key={key}>Agência: {user.agency_id}</h3>
-            <h3 key={key}>Número da conta: {user.accounts_number}</h3>
-            <div key={key}>
-              <h3 className={styles.saldo}>Saldo:
-                {
-                  show?<>R$ {user.account_balance}</>:null
-                }
-              
-                <button 
-                  className={styles.eye} 
-                  onClick={()=>setShow(!show)}>{show ? (<FaEye/>) : (<FaEyeSlash/>)}
-                </button>
-              </h3>
-            </div>
+            <h1 className={styles.saldo}>Saldo:
+              {
+                show?<>R$ {user.account_balance}</>:null
+              }
+              <button 
+                className={styles.eye} 
+                onClick={()=>setShow(!show)}>{show ? (<FaEye/>) : (<FaEyeSlash/>)}
+              </button>
+            </h1>
           </div>
+          
+          <p className={styles.config}><BsGearFill/>Configurações de perfil</p>
         </div>
-        
       ))}
-      </div>
+        <div className={styles.transaction}>
+              <h1>Últimas transações</h1>
+        </div>
+      </>
     </div>
   )
 }

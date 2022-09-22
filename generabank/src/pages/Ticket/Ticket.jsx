@@ -1,8 +1,9 @@
 import React from 'react'
+import styles from './Ticket.module.css'
 
 const Ticket = () => {
   return (
-    <div>Ticket</div>
+    <div className={styles.back}>Ticket</div>
   )
 }
 

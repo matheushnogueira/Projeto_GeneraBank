@@ -1,4 +1,4 @@
-import { cpf, cnpj}    from 'cpf-cnpj-validator';
+//import { cpf, cnpj}    from 'cpf-cnpj-validator';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup        from "yup";
 import { useForm }     from 'react-hook-form';
@@ -9,8 +9,8 @@ import styles          from "./Transfer.module.css"
 
 const schema = yup.object({
 
-     document_number: yup.string().required("Digite o documento da conta").test((value) => cnpj.isValid(value) || cpf.isValid(value)),
-              agency: yup.string().required("Informe a agência"),
+    //  document_number: yup.string().required("Digite o documento da conta").test((value) => cnpj.isValid(value) || cpf.isValid(value)),
+              // agency: yup.string().required("Informe a agência"),
   account_Totransfer: yup.string().min(16,"Informe uma conta válida").required(),
       value_transfer: yup.string().required("Digite o valor a ser transferido"),
 
@@ -31,6 +31,7 @@ const Transfer = () => {
 
   api.post("/api/transfer", 
   {
+    document_number: data.document_number,
     account_Totransfer: data.account_Totransfer,
     value_transfer: data.value_transfer
   }, header)}
@@ -48,11 +49,11 @@ const Transfer = () => {
       </label>
 
       <div className={styles.agency}>
-        <label>
+        {/* <label>
           Agência
           <input type="number" name='agency'{...register("agency", { required: true})}/>
           <span>{errors.agency?.message}</span>
-        </label>
+        </label> */}
 
         <label>
           Conta
